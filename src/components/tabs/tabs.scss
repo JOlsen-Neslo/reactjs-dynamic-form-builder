@@ -1,0 +1,167 @@
+@import '../../stylesheets/variables.scss';
+
+$tab-font-size: rem(14);
+$tab-small-font-size: rem(12);
+$tab-small-max-width: rem(160);
+$tab-checkbox-max-width: rem(350);
+$tab-with-link-max-width: rem(150);
+
+.tabs {
+  $block: &;
+  display: flex;
+  margin-bottom: bu(1.75);
+  flex: 0 0 auto;
+
+  &--with-links {
+    justify-content: space-between;
+
+    #{$block}__tab {
+      max-width: $tab-with-link-max-width;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex: 1;
+  }
+
+  &__link-container {
+    display: flex;
+    align-items: center;
+    padding-right: bu(1);
+    margin-left: bu(1);
+  }
+
+  &--checkbox {
+    #{$block}__tab {
+      background-color: map-get($background-color, light-blue);
+      color: map-get($primary-color, blue);
+      border-bottom: none;
+      padding: bu(1) bu(2) bu(1) 0;
+      border-radius: map-get($border-radius, large);
+      text-transform: none;
+      justify-content: flex-start;
+      max-width: $tab-checkbox-max-width;
+
+      &--active {
+        font-weight: 600;
+        background-color: map-get($primary-color, blue);
+        color: map-get($primary-color, white);
+
+        .checkbox {
+          .checkbox__indicator {
+            border-color: map-get($primary-color, white);
+
+            svg {
+              color: map-get($primary-color, white);
+            }
+          }
+        }
+      }
+
+      .tab__label {
+        padding: 0 bu(3) 0 bu(2);
+      }
+
+      .tab__indicator {
+        left: auto;
+        right: bu(2);
+      }
+
+    }
+
+    #{$block}__tab + #{$block}__tab {
+      margin-left: bu(2);
+    }
+  }
+
+  &--small {
+    margin: 0;
+
+    #{$block}__tab {
+      padding: bu(.5) 0;
+      font-size: $tab-small-font-size;
+      background-color: map-get($background-color, link-water);
+      color: map-get($primary-color, dark-blue);
+      text-transform: none;
+      max-width: $tab-small-max-width;
+
+      .tab__label {
+        font-weight: 500;
+      }
+
+      &--active {
+        background-color: map-get($primary-color, white);
+      }
+    }
+
+    #{$block}__tab + #{$block}__tab {
+      margin-left: bu(.125);
+    }
+  }
+
+  &__tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: bu(2) 0;
+    background-color: map-get($grey-color, lighter);
+    color: rgba(map-get($primary-color, dark-blue), .7);
+    border-bottom: 3px solid transparent;
+    border-radius: map-get($border-radius, default) map-get($border-radius, default) 0 0;
+    font-size: $tab-font-size;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    @include transition(color, background-color, font-weight, border-color);
+
+    & + & {
+      margin-left: bu(.25);
+    }
+
+    &--active {
+      background-color: map-get($background-color, light-blue);
+      color: map-get($primary-color, blue);
+      font-weight: 800;
+      border-color: map-get($primary-color, blue);
+    }
+
+    &--complete {
+      background-color: map-get($background-color, light-blue);
+      color: map-get($primary-color, blue);
+    }
+
+    .tab__indicator {
+      position: absolute;
+      left: bu(1);
+      pointer-events: none;
+    }
+
+    .tab__label {
+      padding: 0 bu(3);
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-left: bu(.5);
+      }
+    }
+  }
+
+  &__link {
+    color: map-get($primary-color, blue);
+    cursor: pointer;
+
+    & + & {
+      margin-left: bu(3);
+    }
+
+    .tab__label {
+      font-weight: 600;
+    }
+  }
+}
+

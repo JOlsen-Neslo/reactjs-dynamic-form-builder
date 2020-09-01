@@ -1,0 +1,12 @@
+/// Overrides for login page
+.auth {
+  background-color: map-get($primary-color, dark-blue);
+  background-image: url(../../images/bg-blue-wave.svg);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+
+  a {
+    color: map-get($primary-color, white);
+  }
+}

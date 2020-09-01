@@ -1,0 +1,209 @@
+@import '../../stylesheets/variables.scss';
+
+$input-font-size: rem(14);
+$input-error-font-size: rem(12);
+$input-suffix-size: rem(24);
+$input-label-font-size: rem(12);
+
+.input {
+  $block: &;
+  width: 100%;
+
+  &--error {
+    #{$block}__input-wrapper {
+      background-color: rgba(map-get($primary-color, red), .4);
+    }
+  }
+
+  &__input-wrapper {
+    @include input-container;
+  }
+
+  input, textarea {
+    @include input-content;
+    @include autofill($bg-color: map-get($background-color, light-blue));
+  }
+
+  &--read-only {
+    #{$block}__input-wrapper {
+      background-color: map-get($grey-color, lightest);
+    }
+
+    input {
+      color: rgba(map-get($primary-color, dark-blue), .7);
+    }
+  }
+
+  // extends container to fill space (vertically)
+  &--extend {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    #{$block}__input-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      > * {
+        flex: 1;
+        width: 100%;
+      }
+    }
+  }
+
+  &__suffix {
+    width: $input-suffix-size;
+    height: $input-suffix-size;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: map-get($primary-color, blue);
+    font-weight: 500;
+  }
+
+  &__auto-generated {
+    font-weight: normal;
+  }
+
+}
+
+.input.input--small {
+  .input__input-wrapper {
+    padding: 0 bu(2);
+    border-radius: map-get($border-radius, large);
+  }
+
+  input {
+    padding: bu(1) 0;
+    color: map-get($primary-color, blue);
+    @include placeholder(map-get($primary-color, blue)) {
+      opacity: 1;
+    }
+  ;
+  }
+}
+
+.input.input--lighter {
+  .input__input-wrapper {
+    background-color: map-get($grey-color, lighter);
+  }
+
+  input {
+    @include placeholder(map-get($text-color, lighter));
+    @include autofill($bg-color: map-get($grey-color, lighter));
+  }
+}
+
+// minimal input overrides (login inputs)
+.input.input--minimal {
+  .input__input-wrapper {
+    background-color: transparent;
+    border-bottom: 1px solid map-get($primary-color, white);
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .input__error-msg {
+    margin-top: bu(1);
+    font-size: $input-error-font-size;
+    font-weight: 700;
+  }
+
+  input {
+    font-size: $input-minimal-font-size;
+    padding: bu(2.25) 0;
+    color: map-get($primary-color, white);
+
+    // Hack: Because chrome won't allow transparent autofill backgrounds,
+    //  we have to manually set it to the color of the background image :/
+    @include autofill(
+            $bg-color: map-get($primary-color, dark-blue),
+            $color: map-get($primary-color, white)
+    );
+
+    @include placeholder(map-get($primary-color, white)) {
+      opacity: 1;
+    }
+  ;
+  }
+
+  .input__suffix {
+    color: map-get($primary-color, white);
+  }
+
+  &.input--error {
+    color: map-get($primary-color, turquoise);
+
+    .input__input-wrapper {
+      border-color: map-get($primary-color, turquoise);
+    }
+
+    input {
+      color: map-get($primary-color, turquoise);
+      @include autofill(
+              $bg-color: map-get($primary-color, dark-blue),
+              $color: map-get($primary-color, turquoise)
+      );
+    }
+
+    .input__suffix {
+      color: map-get($primary-color, turquoise);
+    }
+  }
+}
+
+.input.input--narrow {
+  .input__input-wrapper {
+    padding: 0 bu(1);
+    border-radius: map-get($border-radius, light);
+  }
+}
+
+.password-toggle {
+  cursor: pointer;
+}
+
+.label {
+  $block: &;
+  display: block;
+  width: 100%;
+
+  &--inline {
+    display: flex;
+    align-items: center;
+
+    #{$block}__title {
+      margin: 0 bu(2) 0 0;
+    }
+
+    // give title and input equal contention for space
+    #{$block}__title, > .input {
+      flex: 1;
+    }
+  }
+
+  &--titleLabel {
+    #{$block}__title {
+      color: map-get($primary-color, blue);
+    }
+  }
+
+  &__title {
+    font-size: $input-label-font-size;
+    font-weight: 600;
+    color: map-get($primary-color, dark-blue);
+    margin: 0 0 bu(1) 0;
+    display: flex;
+
+    .title {
+      flex: 1;
+    }
+
+    .error {
+      color: map-get($primary-color, red);
+      font-style: italic;
+    }
+  }
+}
+

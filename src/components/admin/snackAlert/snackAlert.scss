@@ -1,0 +1,72 @@
+@import '../../../stylesheets/variables.scss';
+
+$snack-height: rem(60);
+
+@keyframes enter-snack {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes leave-snack {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.snack {
+  padding: bu(2.5);
+  min-height: $snack-height;
+  background-color: map-get($primary-color, blue);
+  border-top-left-radius: map-get($border-radius, default);
+  border-bottom-left-radius: map-get($border-radius, default);
+  display: flex;
+  align-items: center;
+  color: map-get($primary-color, white);
+  box-shadow: map-get($box-shadow, default);
+
+  & + & {
+    margin-top: bu(1);
+  }
+
+  &--entering {
+    animation: enter-snack .2s;
+  }
+
+  &--closing {
+    animation: leave-snack .2s;
+    animation-fill-mode: forwards;
+  }
+
+  &--success {
+    background-color: map-get($primary-color, turquoise);
+  }
+
+  &--warning {
+    background-color: map-get($primary-color, yellow);
+  }
+
+  &--critical {
+    background-color: map-get($primary-color, red);
+  }
+
+  &__icon {
+    width: rem(22);
+    height: rem(22);
+    margin-right: bu(1.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    flex: 1;
+    margin-right: bu(4);
+  }
+}

@@ -1,0 +1,21 @@
+// All *shared* component-specific configuration that needs to be shared is stored here.
+
+// Admin Header
+$admin-header-height: rem(114);
+$admin-header-gutter: bu(4);
+
+// Input
+$input-minimal-font-size: rem(18);
+
+// Select
+$select-gutter: bu(.625);
+
+// Form
+$form-row-fluid-gutter: bu(2);
+
+// Table
+$table-row-height: rem(50);
+$table-header-actions-width: rem(50);
+
+// Agent Dashboard
+$agent-dash-gutter: bu(2);

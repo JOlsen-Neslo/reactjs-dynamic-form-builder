@@ -1,0 +1,85 @@
+@import '../../stylesheets/variables.scss';
+
+$button-font-size: rem(14);
+$button-small-font-size: rem(12);
+$button-large-font-size: rem(21);
+$button-height: rem(36);
+$button-small-height: rem(24);
+$button-medium-height: rem(32);
+$button-large-height: rem(58);
+$button-gutter: bu(2);
+
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: $button-height;
+  padding: 0 $button-gutter;
+  background-color: map-get($primary-color, blue);
+  border-radius: map-get($border-radius, default);
+  border: 2px solid map-get($primary-color, blue);
+  @include transition(background-color, color, opacity);
+
+  font-size: $button-font-size;
+  font-weight: 600;
+  color: map-get($primary-color, white);
+
+  &--loading {
+    cursor: default;
+  }
+
+  &--large {
+    font-size: $button-large-font-size;
+    height: $button-large-height;
+  }
+
+  &--medium {
+    font-size: $button-small-font-size;
+    height: $button-medium-height;
+    font-weight: 500;
+  }
+
+  &--small {
+    font-size: $button-small-font-size;
+    height: $button-small-height;
+    font-weight: 500;
+  }
+
+  &--hollow {
+    background-color: transparent;
+    color: map-get($primary-color, blue);
+  }
+
+  &--light {
+    background-color: rgba(map-get($primary-color, blue), .1);
+    border: none;
+    color: map-get($primary-color, blue);
+    font-weight: 600;
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: .6;
+  }
+
+  & + & {
+    margin-top: $button-gutter;
+  }
+
+  > svg:not(:last-child) {
+    margin-right: bu(1);
+  }
+}
+
+
+.button-group {
+  display: flex;
+
+  .button + .button, * + * {
+    // reset default button adjacency `margin-top`
+    margin-top: 0;
+    margin: 0 0 0 bu(1);
+  }
+}

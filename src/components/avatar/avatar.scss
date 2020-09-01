@@ -1,0 +1,48 @@
+@import '../../stylesheets/variables.scss';
+
+$avatar-icon-size: rem(42);
+$avatar-font-size: rem(12);
+
+.avatar {
+  $block: &;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  background-color: map-get($primary-color, white);
+
+  // empty state modifications (when waiting for data)
+  &--empty {
+    #{$block}__message {
+      min-width: rem(60);
+      height: rem(30);
+      color: map-get($grey-color, light);
+      background-color: map-get($grey-color, light);
+    }
+
+    #{$block}__icon {
+      background-color: map-get($grey-color, light);
+    }
+  }
+
+  &__message {
+    width: auto;
+    text-align: right;
+    color: map-get($primary-color, blue);
+    font-size: $avatar-font-size;
+    margin-right: bu(2);
+    border-radius: map-get($border-radius, default);
+    @include transition(background-color, color, width);
+
+    strong {
+      display: block;
+    }
+  }
+
+  &__icon {
+    width: $avatar-icon-size;
+    height: $avatar-icon-size;
+    background-color: map-get($primary-color, blue);
+    border-radius: map-get($border-radius, circular);
+    @include transition(background-color);
+  }
+}

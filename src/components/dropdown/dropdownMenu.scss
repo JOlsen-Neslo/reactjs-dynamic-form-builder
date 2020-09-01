@@ -1,0 +1,123 @@
+@import '../../stylesheets/variables.scss';
+
+$dropdown-menu-min-width: rem(160);
+$dropdown-menu-font-size: rem(14);
+$dropdown-select-max-height: rem(300);
+
+.dropdown-menu {
+  $block: &;
+  box-shadow: map-get($box-shadow, default);
+  border-radius: map-get($border-radius, light);
+  overflow: hidden;
+  min-width: $dropdown-menu-min-width;
+
+  // Select dropdown menu
+  &--select {
+    min-width: auto;
+    background-color: map-get($grey-color, lighter);
+    padding: 0 $select-gutter;
+    border-radius: map-get($border-radius, default);
+    max-height: $dropdown-select-max-height;
+    overflow-y: scroll;
+    @include hide-scrollbars();
+
+    #{$block}__item + #{$block}__item {
+      border-top: 2px solid map-get($background-color, light-blue);
+    }
+
+    #{$block}__item {
+      background-color: transparent;
+      padding: bu(.375) 0;
+
+      &--selected {
+        #{$block}__item-content {
+          background: map-get($background-color, light-blue);
+          border-radius: map-get($border-radius, light);
+
+          > button {
+            color: map-get($primary-color, blue);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    #{$block}__item-content {
+      > button {
+        padding: bu(1);
+        color: rgba(map-get($primary-color, dark-blue), .7);
+        font-weight: 400;
+      }
+    }
+
+
+    // Select-minimal dropdown menu (nested in `--select` as it is used in conjuction)
+    &#{$block}--minimal {
+      padding: 0;
+      background-color: map-get($primary-color, dark-blue);
+      border-bottom-left-radius: map-get($border-radius, default);
+      border-bottom-right-radius: map-get($border-radius, default);
+
+      #{$block}__item {
+        padding: bu(.25) 0;
+
+        &--selected {
+          #{$block}__item-content {
+            background: transparent;
+
+            > button {
+              color: map-get($primary-color, blue);
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      #{$block}__item + #{$block}__item {
+        border-top: 1px solid rgba(map-get($primary-color, white), .3);
+      }
+
+      #{$block}__item-content {
+        > button {
+          color: map-get($primary-color, white);
+        }
+      }
+    }
+
+    &#{$block}--narrow {
+      background-color: map-get($primary-color, white);
+
+      #{$block}__item {
+        button {
+          font-size: rem(12);
+        }
+      }
+    }
+  }
+
+
+  &__item {
+    background-color: map-get($background-color, light-blue);
+
+    & + & {
+      border-top: 1px solid map-get($primary-color, white);
+    }
+  }
+
+  &__item-content {
+    display: block;
+    width: 100%;
+    display: flex;
+    @include transition(background-color);
+
+    > button {
+      color: map-get($primary-color, blue);
+      flex: 1;
+      padding: bu(2) bu(1.75);
+      font-size: $dropdown-menu-font-size;
+      font-weight: 500;
+      text-align: left;
+      @include transition(color, font-weight);
+    }
+  }
+}

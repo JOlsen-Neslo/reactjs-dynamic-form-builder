@@ -1,0 +1,48 @@
+@import '../../../stylesheets/variables.scss';
+
+$form-action-button-width: rem(188);
+
+.form-action {
+  $block: &;
+  display: flex;
+  margin-top: bu(6);
+  margin-bottom: bu(3);
+  opacity: 1;
+  @include transition(opacity);
+
+  &--secondary {
+    margin-top: bu(3);
+
+    & + & {
+      margin-top: 0;
+    }
+
+    #{$block}__message {
+      @include input-container;
+      background-color: map-get($grey-color, lighter);
+      font-weight: 400;
+      color: map-get($primary-color, dark-blue);
+      margin-right: bu(1);
+    }
+  }
+
+  &--floating {
+    position: fixed;
+    bottom: bu(2);
+    right: bu(4);
+    width: 100%;
+  }
+
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__message {
+    flex: 1 0 auto;
+  }
+
+  &__action {
+    min-width: $form-action-button-width;
+  }
+}

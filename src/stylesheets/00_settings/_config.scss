@@ -1,0 +1,29 @@
+/// Base font size set on the html node, declaring value of 1rem
+$base-font-size: 16;
+$base-font-size-px: $base-font-size * 1px;
+
+/// Base unit value (set to half $base-font-size), used
+///  as standard unit with which to calculate gaps and margins.
+$base-unit: 8;
+
+$border-radius: (
+  light: rem(4),
+  default: rem(8),
+  large: rem(16),
+  circular: 50%
+);
+
+$box-shadow: (
+  default: 0 rem(4) rem(4) rgba(map-get($primary-color, dark-blue), .1)
+);
+
+/// Standardised transition duration for all transitions
+$transition-duration: .2s;
+
+// our designed width is 1366, which falls at the upper bound of `large`
+$breakpoints: (
+  small: 0,
+  medium: 768,
+  large: 1024,
+  x-large: 1367
+);

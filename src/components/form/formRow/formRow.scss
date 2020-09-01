@@ -1,0 +1,45 @@
+@import '../../../stylesheets/variables.scss';
+
+$form-row-min-height: rem(70);
+
+.form-row {
+  $block: &;
+  display: flex;
+  flex: 1 0 auto;
+  margin: bu(1) bu(-1) 0;
+
+  &--fluid {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  &--center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--narrow {
+    min-height: $form-row-min-height/2;
+  }
+
+  // scaffold maintains a min-row height (meant for smaller content)
+  &--scaffold {
+    min-height: $form-row-min-height;
+  }
+
+  &__message {
+    color: map-get($primary-color, white);
+    width: 100%;
+    text-align: center;
+    max-width: rem(365);
+    margin: 0 auto;
+
+    strong {
+      color: map-get($primary-color, blue);
+    }
+
+    &--narrow {
+      width: 50%;
+    }
+  }
+}

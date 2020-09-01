@@ -1,0 +1,126 @@
+//  breakpoint mixins based on breakpoint definitions, accepting content blocks
+@mixin breakpoint($bp-name) {
+  $min-width: '';
+
+  @if map-has-key($breakpoints, $bp-name) {
+    $min-width: map-get($breakpoints, $bp-name);
+  }
+  @else if (type_of($bp-name) == number) {
+    $min-width: $bp-name;
+  }
+
+  $min-width-ems: ($min-width / $base-font-size) * 1em;
+
+  @media screen and (min-width: $min-width-ems) {
+    @content;
+  }
+}
+
+/// Single mixin to change font families
+@mixin set-font-family($font-family: default) {
+  @if $font-family == default {
+    font-family: 'Barlow', sans-serif;
+  }
+}
+
+// Combines a set of `$properties` into a transition property using `$transition-duration`
+@mixin transition($properties...) {
+  $transition: '';
+
+  @each $property, $index in $properties {
+    $transition: unquote($transition) + $property $transition-duration;
+
+    @if index($properties, $property) < length($properties) {
+      $transition: $transition + ', ';
+    }
+  }
+
+  transition: $transition;
+}
+
+// Standardised input wrapper styles
+@mixin input-container() {
+  display: flex;
+  align-items: center;
+  background-color: map-get($background-color, light-blue);
+  border-radius: map-get($border-radius, default);
+  padding: 0 bu(1.75);
+  @include transition(border-color);
+}
+
+// Standardised input element styles
+@mixin input-content() {
+  border: none;
+  font-size: rem(14);
+  font-weight: 500;
+  color: map-get($primary-color, dark-blue);
+  background-color: transparent;
+  flex: 1 0 auto;
+  padding: bu(2) 0;
+  @include transition(color);
+  @include placeholder(map-get($primary-color, dark-blue)) {
+    opacity: .7;
+  }
+}
+
+// Helper to output placeholder styling for each browser.
+// Accepts a block of properties to add to the placeholders.
+@mixin placeholder($color) {
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $color;
+    @content;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: $color;
+    @content;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: $color;
+    @content;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: $color;
+    @content;
+  }
+}
+
+// Specify styles for browser-forced autocomplete css overrides
+@mixin autofill($bg-color, $color:null) {
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 rem(1000) $bg-color inset;
+    box-shadow:0 0 0 rem(1000) $bg-color inset;
+
+    @if ($color) {
+      -webkit-text-fill-color: $color;
+      text-fill-color: $color;
+    }
+
+    @content;
+  }
+}
+
+// Cross-browser hide scrollbars
+@mixin hide-scrollbars() {
+  -ms-overflow-style: none;  // IE and Edge
+  scrollbar-width: none;  // Firefox
+  &::-webkit-scrollbar {     // webkit
+    display: none;
+  }
+}
+
+// A helper used to apply absolute position, such that the
+//  element fills it's parents contents.
+@mixin absolute-fill-parent() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin modal-content-layout($height: rem(595)) {
+  height: $height;
+  padding: bu(3);
+  background-color: map_get($primary-color, white);
+  border-radius: map_get($border-radius, default);
+}

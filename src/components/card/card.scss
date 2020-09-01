@@ -1,0 +1,64 @@
+@import '../../stylesheets/variables.scss';
+
+$card-list-gutter: bu(3.75);
+$card-list-narrow-width: rem(560);
+$card-body-font-size: rem(16);
+$card-width: rem(166);
+$card-action-width: rem(90);
+
+/// A container for card-lists, to constrain dimensions
+.card-list-container {
+  max-width: $card-list-narrow-width;
+  margin: bu(5) auto;
+}
+
+/// A utility class to contain a number of .card elements
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  // negative margin to make sure the container's edge lines up with the cards' edge
+  //  (we push the cards in by the same amount below)
+  margin: -$card-list-gutter/2;
+
+  .card {
+    // margin to separate cards from each other
+    margin: $card-list-gutter/2;
+  }
+}
+
+.card {
+  width: $card-width;
+  border-radius: map-get($border-radius, light);
+  box-shadow: map-get($box-shadow, default);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__body {
+    flex: 1 1 auto; // grow the body to push the action-container down
+    background-color: map-get($grey-color, lighter);
+    color: map-get($primary-color, blue);
+    padding: bu(2.5) bu(2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: $card-body-font-size;
+    font-weight: 600;
+
+    > * {
+      max-width: 100%;
+    }
+  }
+
+  &__action-container {
+    background-color: map-get($primary-color, white);
+    padding: bu(1);
+  }
+
+  &__action {
+    width: $card-action-width;
+    margin: 0 auto;
+  }
+}

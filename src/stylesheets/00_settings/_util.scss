@@ -1,0 +1,33 @@
+/// Produces a multiple of the base-unit value, in rems.
+/// @param {Number} $amount - amount by which to multiply $base-units.
+///
+/// @example scss - Set margin to 1rem
+///   margin: bu(2);
+///
+@function bu($amount){
+  @if unitless($amount) {
+    @return ($base-unit*$amount/$base-font-size) * 1rem;
+  }
+  @else {
+    @error "Base unit parameters must be unitless";
+  }
+}
+
+/// Converts a unitless or px value to rems.
+/// @param {Number} $value - a unitless or px value to convert to rem
+///
+/// @example scss - Set width to 220px, but in rems.
+///   width: rem(220);
+///
+@function rem($value){
+  @if unitless($value) {
+    @return $value/$base-font-size * 1rem;
+  }
+  @else if unit($value) == "px" {
+    @return $value / ($value * 0 + 1) / $base-font-size * 1rem;
+  }
+  @else {
+    @error "Unable to convert unit #{unit($value)} to rem";
+  }
+}
+

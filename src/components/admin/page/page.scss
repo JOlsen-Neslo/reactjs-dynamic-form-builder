@@ -1,0 +1,51 @@
+@import '../../../stylesheets/variables.scss';
+
+$page-title-font-size: rem(21);
+$page-title-min-height: rem(32);
+$page-content-max-width: rem(1040);
+$page-action-min-width: rem(144);
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 auto;
+  // TODO: Custom scrollbars
+  overflow: scroll;
+  padding: bu(1.75) $admin-header-gutter bu(10);
+
+  &__title-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: bu(4);
+    min-height: $page-title-min-height;
+  }
+
+  &__title {
+    font-size: $page-title-font-size;
+    line-height: 1.1;
+    font-weight: 600;
+    color: map-get($primary-color, blue);
+    flex: 1;
+  }
+
+  &__action {
+    flex: 0;
+    min-width: $page-action-min-width;
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__content-wrapper {
+    max-width: $page-content-max-width;
+    width: 100%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+  }
+}

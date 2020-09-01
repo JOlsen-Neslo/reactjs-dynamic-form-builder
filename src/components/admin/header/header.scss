@@ -1,0 +1,30 @@
+@import '../../../stylesheets/variables.scss';
+
+$header-search-width: rem(630);
+
+.header {
+  height: $admin-header-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $admin-header-gutter;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+
+    > * + * {
+      margin-left: $admin-header-gutter;
+    }
+  }
+
+  &__search {
+    width: 100%;
+
+    @include breakpoint(x-large) {
+      max-width: $header-search-width;
+    }
+  }
+}

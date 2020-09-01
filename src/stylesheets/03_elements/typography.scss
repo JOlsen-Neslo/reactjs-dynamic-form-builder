@@ -1,0 +1,79 @@
+// list of elements and their typographical properties
+$typography: (
+  // element font sizes
+  h1: (
+    fs: rem(64),
+    fw: 800,
+  ),
+  h2: (
+    fs: rem(48)
+  ),
+  h3: (
+    fs: rem(32)
+  ),
+  h4: (
+    fs: rem(24),
+    fw: 600
+  ),
+  h5: (
+    fs: rem(18),
+    fw: 700
+  ),
+  h6: (
+    fs: rem(16),
+    fw: 600
+  ),
+  a: (
+    fs: rem(12),
+    fw: 700
+  ),
+
+  // custom font size classes
+  large-title: (
+    fs: rem(26),
+    fw: 500
+  ),
+  title: (
+    fs: rem(21),
+    fw: 500
+  ),
+  large-label: (
+    fs: rem(18),
+    fw: 600
+  ),
+  form-title: (
+    fs: rem(14),
+    fw: 600
+  ),
+  small-title: (
+    fs: rem(12),
+    fw: 500
+  ),
+  small-link: (
+    fs: rem(10),
+    fw: 500
+  )
+);
+
+@mixin render-property($property, $value) {
+  @if ($property == 'fs') {
+    font-size: $value;
+  }
+  @if ($property == 'fw') {
+    font-weight: $value;
+  }
+}
+
+@each $element, $config in $typography {
+  #{$element} {
+    @each $property, $value in $config {
+      @include render-property($property, $value);
+    }
+  }
+
+  .typo-#{$element} {
+    @each $property, $value in $config {
+      @include render-property($property, $value);
+    }
+  }
+}

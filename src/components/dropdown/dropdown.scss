@@ -1,0 +1,36 @@
+@import '../../stylesheets/variables.scss';
+
+.dropdown {
+  position: relative;
+
+  &__trigger {
+    cursor: pointer;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; // place over page content
+    background-color: transparent;
+  }
+
+  &__popper {
+    opacity: 0;
+    pointer-events: none;
+    @include transition(opacity);
+
+    // when we need the popup to fill the width of its parent (e.g. select)
+    &--expand {
+      width: 100%;
+    }
+
+    &--open {
+      opacity: 1;
+      pointer-events: all;
+      z-index: 2; // place over overlay
+    }
+  }
+}

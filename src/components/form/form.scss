@@ -1,0 +1,16 @@
+@import '../../stylesheets/variables.scss';
+
+$form-narrow-max-width: rem(430);
+
+.form {
+  width: 100%;
+
+  &--narrow {
+    max-width: $form-narrow-max-width;
+    margin: 0 auto;
+  }
+
+  &__fields {
+    margin-bottom: bu(5);
+  }
+}

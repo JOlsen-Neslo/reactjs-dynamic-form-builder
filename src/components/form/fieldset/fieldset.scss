@@ -1,0 +1,59 @@
+@import '../../../stylesheets/variables.scss';
+
+.fieldset {
+  $block: &;
+  margin: 0;
+  padding: bu(2) bu(1);
+  border: none;
+  max-width: 50%;
+  width: 100%;
+  flex: 0 0 auto;
+
+  &--fluid {
+    flex: 1;
+    max-width: none;
+
+    #{$block}__fields {
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin: bu(-1);
+
+      > .label, > .input, > .file-input, > .select {
+        max-width: 50%;
+        width: 100%;
+        flex: 0 0 auto;
+        padding: bu(1);
+
+        & + .label, & + .input, & + .file-input, & + .select {
+          margin: 0;
+        }
+      }
+
+      > #{$block} {
+        padding-top: 0;
+      }
+    }
+  }
+
+  > legend {
+    color: map-get($primary-color, blue);
+    padding: 0;
+  }
+
+  &__fields {
+    margin: 0 bu(-1);
+
+    > .label, > .input, > .file-input, > .select {
+      padding: 0 bu(1);
+
+      & + .label, & + .input, & + .file-input, & + .select {
+        margin-top: bu(1);
+      }
+    }
+
+    > #{$block} {
+      padding-top: 0;
+    }
+  }
+}

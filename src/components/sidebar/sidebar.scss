@@ -1,0 +1,59 @@
+@import '../../stylesheets/variables.scss';
+
+$sidebar-menu-item-peek: rem(-5);
+$sidebar-menu-icon-size: rem(25);
+$sidebar-link-font-size: rem(16);
+
+.sidebar {
+  background-color: map-get($grey-color, lighter);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: bu(4);
+
+  &__header {
+    height: $admin-header-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $admin-header-gutter;
+  }
+
+  &__menu {
+    flex: 1 0 auto;
+  }
+
+  &__menu-item {
+    display: flex;
+    align-items: center;
+    margin-right: $sidebar-menu-item-peek;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-size: $sidebar-link-font-size;
+    font-weight: 600;
+    width: 100%;
+    padding: bu(1.75) bu(3.125);
+    cursor: pointer;
+    color: map-get($primary-color, blue);
+    background-color: transparent;
+    border-radius: 0 map-get($border-radius, default) map-get($border-radius, default) 0;
+    @include transition(color, background-color, margin-right);
+
+    &--active {
+      background-color: map-get($primary-color, blue);
+      color: map-get($primary-color, white);
+    }
+  }
+
+  &__link-icon {
+    width: $sidebar-menu-icon-size;
+    height: $sidebar-menu-icon-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: bu(1.75);
+  }
+}

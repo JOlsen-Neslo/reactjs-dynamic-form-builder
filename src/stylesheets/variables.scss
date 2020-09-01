@@ -1,0 +1,10 @@
+/// Used by component stylesheets in order to get access to variables, functions and mixins.
+///
+/// TODO: This is temporary. The problem is that each import of this file will cause duplicate styles,
+///  so don't @import anything that outputs style selectors.
+///  This needs to be replaced with global injection of the below.
+@import '00_settings/util';
+@import './00_settings/color';
+@import '00_settings/config';
+@import './00_settings/component';
+@import '01_tools/mixin';

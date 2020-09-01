@@ -1,0 +1,72 @@
+@import '../../../stylesheets/variables.scss';
+
+$modal-gutter: bu(5);
+$modal-container-max-width: rem(812);
+$modal-message-max-width: rem(400);
+$modal-message-font-size: rem(16);
+$modal-action-font-size: rem(14);
+
+// modal element, positioned above everything else
+.admin-modal {
+  @include absolute-fill-parent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $modal-gutter; // modal contents should never touch screen sides
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  @include transition(opacity, z-index);
+  background-image: url(../../../images/bg-blue-wave-light.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &--shown {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 1;
+  }
+
+  // modal's overlay, covering the screen, but positioned
+  //  below the modal contents with z-index.
+  &__overlay {
+    @include absolute-fill-parent;
+    background-color: map-get($primary-color, blue);
+    opacity: .4;
+    z-index: -1;
+  }
+
+  // the modal 'box' content
+  &__container {
+    width: 100%;
+    max-width: $modal-container-max-width;
+    background-color: map-get($primary-color, white);
+    color: map-get($primary-color, blue);
+    box-shadow: map-get($box-shadow, default);
+    border-radius: map-get($border-radius, light);
+    text-align: center;
+    padding: 0 $modal-gutter $modal-gutter;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__title {
+    margin-top: bu(4);
+  }
+
+  &__message {
+    font-size: $modal-message-font-size;
+    font-weight: 600;
+    max-width: $modal-message-max-width;
+    margin: bu(1.5) auto 0;
+  }
+
+  &__action {
+    display: block;
+    font-size: $modal-action-font-size;
+    font-weight: 700;
+    margin: $modal-gutter auto 0;
+  }
+}

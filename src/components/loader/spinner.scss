@@ -1,0 +1,76 @@
+// A simple css loader, taken and reworked from https://loading.io/
+@import '../../stylesheets/variables';
+
+$loader-width: rem(57);
+$loader-orb-size: rem(10);
+
+.loader-ellipsis {
+  display: flex;
+  position: relative;
+  width: $loader-width;
+  height: $loader-orb-size;
+  margin: 0 auto;
+
+  &--blue {
+    div {
+      background: map-get($primary-color, blue) !important;
+    }
+  }
+
+  div {
+    position: absolute;
+    top: 0;
+    width: $loader-orb-size;
+    height: $loader-orb-size;
+    border-radius: 50%;
+    background: map-get($primary-color, white);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+}
+
+.loader-ellipsis div:nth-child(1) {
+  left: rem(4);
+  animation: loader-ellipsis1 0.6s infinite;
+}
+
+.loader-ellipsis div:nth-child(2) {
+  left: rem(4);
+  animation: loader-ellipsis2 0.6s infinite;
+}
+
+.loader-ellipsis div:nth-child(3) {
+  left: rem(24);
+  animation: loader-ellipsis2 0.6s infinite;
+}
+
+.loader-ellipsis div:nth-child(4) {
+  left: rem(44);
+  animation: loader-ellipsis3 0.6s infinite;
+}
+
+@keyframes loader-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes loader-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes loader-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(rem(20), 0);
+  }
+}

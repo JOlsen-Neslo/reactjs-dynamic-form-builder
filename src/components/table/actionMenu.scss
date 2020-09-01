@@ -1,0 +1,48 @@
+@import '../../stylesheets/variables.scss';
+
+$action-menu-icon-height: rem(14);
+
+.action-menu {
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(100%);
+  padding-right: $table-header-actions-width;
+  background-color: map-get($primary-color, white);
+  width: 100%;
+  background: linear-gradient(270deg, #E8F3FF 0%, rgba(map-get($primary-color, white), 0) 100%);
+  border-radius: map-get($border-radius, light);
+  opacity: 0;
+  @include transition(transform, opacity);
+  transition-delay: .2s;
+
+  &--shown {
+    transform: translate(0%);
+    opacity: 1;
+  }
+
+  &__trigger {
+    cursor: pointer;
+    height: $table-row-height;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    & + & {
+      margin-left: bu(5);
+    }
+
+    > svg {
+      height: $action-menu-icon-height;
+      margin-right: bu(.5);
+    }
+  }
+}

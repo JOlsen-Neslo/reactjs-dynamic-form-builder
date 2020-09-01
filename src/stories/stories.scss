@@ -1,0 +1,45 @@
+/// Styles for stories. Includes app config.
+
+@import '../stylesheets/app.scss';
+
+.color-list {
+  display: flex;
+}
+
+.color {
+  width: rem(60);
+  height: rem(160);
+  border-radius: rem(64);
+  margin-right: bu(1);
+
+  @each $color-name, $color in $primary-color {
+    &--#{$color-name} {
+      background-color: $color;
+    }
+  }
+
+  @each $color-name, $color in $grey-color {
+    &--#{$color-name} {
+      background-color: $color;
+    }
+  }
+}
+
+.icon-list {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-right: bu(1);
+  }
+}
+
+.story-heading {
+  margin-bottom: bu(2);
+  color: map-get($grey-color, medium);
+  border-bottom: 1px solid map-get($grey-color, default);
+
+  * + & {
+    margin-top: bu(4);
+  }
+}

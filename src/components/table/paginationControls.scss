@@ -1,0 +1,42 @@
+@import '../../stylesheets/variables.scss';
+
+$pagination-font-size: rem(10);
+$pagination-control-size: rem(24);
+$pagination-control-icon-size: rem(8);
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &-control {
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $pagination-control-size;
+    height: $pagination-control-size;
+    line-height: 1;
+    border-radius: map-get($border-radius, circular);
+    background-color: map-get($grey-color, default);
+    color: map-get($primary-color, white);
+    font-size: $pagination-font-size;
+    @include transition(background-color, font-weight);
+
+    & + & {
+      margin-left: bu(1);
+    }
+
+    &--active {
+      background-color: map-get($primary-color, blue);
+      font-weight: 500;
+    }
+
+    &:hover {
+      background-color: rgba(map-get($primary-color, blue), .7);
+    }
+
+    &__icon {
+      height: $pagination-control-icon-size;
+    }
+  }
+}

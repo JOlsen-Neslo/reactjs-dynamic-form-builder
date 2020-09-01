@@ -1,0 +1,62 @@
+@import '../../stylesheets/variables.scss';
+
+$guide-width: rem(235);
+$guide-min-height: rem(150);
+$guide-title-font-size: rem(12);
+
+.guide {
+  position: relative;
+  border-radius: map-get($border-radius, default);
+  background-image: url(../../images/bg-tip-small.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: map-get($primary-color, white);
+  width: $guide-width;
+  min-height: $guide-min-height;
+  box-shadow: map-get($box-shadow, default);
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    text-align: center;
+    padding: bu(1.5);
+    flex: 0 0 auto;
+
+    &-icon {
+      margin: 0 auto bu(1.5);
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+
+    // pad direct descendants, for better clickability
+    > * {
+      padding: bu(1);
+    }
+
+    // position direct children away from each other
+    > * + * {
+      margin-left: bu(1);
+    }
+  }
+
+  &__title {
+    font-size: $guide-title-font-size;
+    font-weight: 600;
+  }
+
+  &__body {
+    text-align: center;
+    padding: 0 bu(2) bu(2);
+    line-height: 1.2;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

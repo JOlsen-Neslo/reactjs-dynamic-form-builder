@@ -1,0 +1,64 @@
+@import '../../stylesheets/variables.scss';
+
+$checkbox-indicator-size: rem(16);
+$checkbox-label-font-size: rem(12);
+
+.checkbox {
+  $block: &;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+
+  // contained when living inside other components, will stretch to fill space
+  &--contained {
+    justify-content: space-between;
+    @include input-content;
+
+    #{$block}__label {
+      font-size: inherit;
+      color: inherit;
+      font-weight: inherit;
+    }
+  }
+
+  &--centered {
+    justify-content: center;
+  }
+
+  &--read-only {
+    #{$block}__label {
+      color: rgba(map-get($primary-color, dark-blue), .7);
+    }
+  }
+
+  // hide native input
+  &__native {
+    display: none;
+  }
+
+  &__indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $checkbox-indicator-size;
+    height: $checkbox-indicator-size;
+    border: 2px solid map-get($primary-color, blue);
+    border-radius: map-get($border-radius, light);
+    background-color: transparent;
+    color: map-get($primary-color, blue);
+    @include transition(background-color, color);
+
+    &--checked {
+      background-color: map-get($primary-color, blue);
+      color: map-get($primary-color, white);
+    }
+  }
+
+  &__label {
+    margin-right: bu(1);
+    font-size: $checkbox-label-font-size;
+    color: map-get($primary-color, blue);
+    font-weight: 700;
+  }
+}

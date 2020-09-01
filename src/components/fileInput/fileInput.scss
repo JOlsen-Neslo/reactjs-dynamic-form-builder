@@ -1,0 +1,46 @@
+@import '../../stylesheets/variables.scss';
+
+$file-input-status-font-size: rem(14);
+$file-input-preview-width: rem(200);
+$file-input-preview-height: rem(180);
+
+.file-input {
+  display: flex;
+  align-items: center;
+
+  &__native {
+    // this might need to change, if `display: none` excludes the input
+    //  from form params
+    display: none;
+  }
+
+  &__status {
+    flex: 2;
+    font-size: $file-input-status-font-size;
+    font-weight: 500;
+    color: rgba(map-get($primary-color, dark-blue), .7);
+    max-width: rem(300);
+
+    img {
+      height: 100%;
+      display: block;
+    }
+  }
+
+  &__preview {
+    flex: 1;
+  }
+
+  &__preview-image {
+    width: $file-input-preview-width;
+    height: $file-input-preview-height;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex: 1;
+  }
+
+  &__action {
+    flex: 1;
+  }
+}

@@ -1,0 +1,50 @@
+@import '../../stylesheets/variables.scss';
+
+$dashboard-sidebar-width: rem(244);
+$dashboard-narrow-width: rem(560);
+
+.layout-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  // When the layout is contained within another element (not
+  //  filling the screen), but we still want to fill the space
+  //  with centralised contents
+  &--contained {
+    min-height: auto;
+    flex: 1 1 auto;
+  }
+
+  // forces contents into the center of the layout
+  &--narrow {
+    max-width: $dashboard-narrow-width;
+    margin: 0 auto;
+  }
+}
+
+.layout-dashboard {
+  height: 100vh;
+  display: flex;
+
+  // fits the entire dashboard into screen limits
+  &--constrained {
+    overflow: hidden;
+  }
+
+  &__side-content {
+    width: $dashboard-sidebar-width;
+    height: 100%;
+    flex: 0 0 auto;
+    z-index: 1; // needs to appear above, as sidebar elements render over the body
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+}

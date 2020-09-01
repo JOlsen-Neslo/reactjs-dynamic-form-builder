@@ -1,0 +1,100 @@
+@import '../../stylesheets/variables';
+
+.select {
+  $block: &;
+  cursor: pointer;
+  position: relative;
+  flex: 1;
+
+  &--minimal {
+    #{$block}__selected {
+      font-size: $input-minimal-font-size;
+      padding: bu(2.25) 0;
+      color: map-get($primary-color, white);
+      margin: 0;
+    }
+
+    #{$block}__indicator {
+      color: map-get($primary-color, white);
+    }
+  }
+
+  &--small {
+    &#{$block}--open {
+      padding: 0;
+      background-color: map-get($background-color, light-blue);
+      border-top-left-radius: map-get($border-radius, large);
+      border-top-right-radius: map-get($border-radius, large);
+
+      .dropdown-menu {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+
+    #{$block}__selected {
+      padding: bu(1) 0;
+      margin: 0;
+      color: map-get($primary-color, blue);
+    }
+  }
+
+  &--narrow {
+    &#{$block}--open {
+      padding: 0;
+    }
+
+    #{$block}__selected {
+      padding: bu(1) 0;
+      margin: 0;
+      color: rgba(map-get($primary-color, dark-blue), .7);
+      font-size: rem(12);
+    }
+
+    &#{$block}--has-value {
+      #{$block}__selected {
+        color: map-get($primary-color, blue);
+      }
+    }
+  }
+
+  &--transparent {
+    .input__input-wrapper {
+      background: transparent;
+    }
+
+    &#{$block}--has-value {
+      #{$block}__selected {
+        color: map-get($primary-color, dark-blue);
+      }
+    }
+  }
+
+  &--no-padding {
+    #{$block}__selected {
+      padding: 0;
+    }
+  }
+
+  &--read-only {
+    #{$block}__selected {
+      color: rgba(map-get($primary-color, dark-blue), .7);
+    }
+  }
+
+  &__selected {
+    display: flex;
+    align-items: center;
+    @include input-content;
+    margin: $select-gutter;
+    padding: (bu(2) - $select-gutter) 0;
+  }
+
+  &__label {
+    flex: 1;
+  }
+
+  &__indicator {
+    color: map-get($primary-color, blue);
+  }
+}

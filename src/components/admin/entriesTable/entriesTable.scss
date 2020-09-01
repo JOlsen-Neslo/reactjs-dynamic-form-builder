@@ -1,0 +1,8 @@
+@import '../../../stylesheets/variables';
+
+.entries-table {
+  &__title {
+    color: map-get($primary-color, blue);
+    margin-bottom: bu(1.5);
+  }
+}

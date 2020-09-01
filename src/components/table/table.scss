@@ -1,0 +1,150 @@
+@import '../../stylesheets/variables.scss';
+
+$table-font-size: rem(14);
+$table-small-font-size: rem(12);
+
+$table-narrow-row-height: rem(36);
+$table-narrow-header-row-height: rem(36);
+
+.table {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+
+  &__header {
+    background-color: map-get($grey-color, lighter);
+
+    tr {
+      height: $table-row-height;
+
+    }
+
+    &--narrow {
+      tr {
+        height: $table-narrow-header-row-height;
+      }
+    }
+  }
+
+  &__body {
+    tr {
+      height: $table-row-height;
+      background-color: map-get($primary-color, white);
+
+
+      &:nth-child(even) {
+        background-color: map-get($background-color, lavender-blue);
+      }
+    }
+
+    &--narrow {
+      tr {
+        height: $table-narrow-row-height;
+      }
+    }
+  }
+
+  &__filters {
+    margin-bottom: bu(1.75);
+    width: 100%;
+  }
+
+  &__pagination {
+    margin-top: bu(10);
+  }
+
+  &__title {
+    color: map-get($primary-color, dark-blue);
+    margin-bottom: bu(2);
+    width: 100%;
+  }
+
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+}
+
+th.table-heading {
+  font-size: $table-font-size;
+  font-weight: 500;
+  color: rgba(map-get($primary-color, dark-blue), .7);
+  text-align: left;
+  padding: 0 bu(2);
+
+  &--small {
+    font-size: $table-small-font-size;
+  }
+
+  &--bordered {
+    border: rem(2) solid map_get($primary-color, white);
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--actions {
+    width: $table-header-actions-width;
+    color: map-get($primary-color, blue);
+  }
+}
+
+tr.table-row {
+  transform: scale(1);
+}
+
+td.table-cell {
+  color: map-get($primary-color, dark-blue);
+  padding: 0 bu(2);
+  font-size: $table-font-size;
+  text-align: left;
+
+  &:not(:last-of-type):not(&--borderless) {
+    border-right: 1px solid map-get($primary-color, white);
+  }
+
+  &--small {
+    font-size: $table-small-font-size;
+  }
+
+  &--borderless {
+    border: none;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--strong {
+    font-weight: 500;
+  }
+
+  &--actions {
+    width: $table-header-actions-width;
+    color: map-get($primary-color, blue);
+  }
+}
+
+.table-filters {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+
+  > * {
+    flex: 1;
+    max-width: 33.333%;
+    text-align: left;
+  }
+}

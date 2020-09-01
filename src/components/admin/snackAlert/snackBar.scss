@@ -1,0 +1,14 @@
+@import '../../../stylesheets/variables';
+
+$snack-bar-width: rem(350);
+
+$snack-bar-vert-offset: bu(-1.5);
+
+.snack-bar {
+  min-width: $snack-bar-width;
+  position: fixed;
+  top: $admin-header-height;
+  right: 0;
+  transform: translateY($snack-bar-vert-offset);
+  z-index: 10;
+}

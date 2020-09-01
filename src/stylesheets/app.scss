@@ -1,0 +1,18 @@
+/// This is the entry point for including all style configuration files.
+///
+/// Application style configuration follows the guidelines laid out
+///  by ITCSS (https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/).
+/// Each folder represents a level of specificity, from least to most specific.
+/// The config needs to be loaded in this order to ensure style rules are applied
+///  correctly and predictably.
+
+@import './00_settings/util';
+@import './00_settings/color';
+@import './00_settings/config';
+@import './00_settings/font';
+@import './00_settings/component';
+@import './01_tools/mixin';
+@import './02_generic/reset';
+@import './03_elements/typography';
+@import './04_utilities/visibility';
+@import './05_overrides/login';
