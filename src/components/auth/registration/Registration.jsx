@@ -21,7 +21,7 @@ const countries = [
     { label: 'United States of America', value: 'United-States of America' }
 ];
 
-const welcomeMessage = <>Register to access Accolade<br/>and see your business grow!</>
+const welcomeMessage = <>Register to access our app<br/>and see your business grow!</>
 const successMessage = <><strong>Thank you!</strong><br/> Please check your email to complete your registration.</>;
 const failureMessage = <><strong>Oops!</strong> Something went wrong.</>;
 

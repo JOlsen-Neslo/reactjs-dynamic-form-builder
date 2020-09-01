@@ -55,7 +55,7 @@ export const homeMenuItems = [
     label: 'Create',
   },
   {
-    help: 'Run Accolade as smooth as possible. Follow the easy set-up and grow your business.',
+    help: 'Run our app as smooth as possible. Follow the easy set-up and grow your business.',
     icon: getHomeMenuIcon('Operational Profile', imageOperationalProfileSrc),
     label: 'Create',
     path: '/admin/operational-profile',
